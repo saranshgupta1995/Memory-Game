@@ -8,6 +8,7 @@ let moves;
 let shuffledCards;
 let mins;
 let secs;
+let startTimer;
 let span;
 let youWin=document.getElementsByClassName("youWin")[0];
 let timer=document.getElementsByClassName("timer")[0];
@@ -41,14 +42,6 @@ document.getElementsByClassName("restart")[1].onclick=function(){
 var modal = document.getElementById('myModal');
 
 
-const startTimer=setInterval(function(){
-    secs+=1;
-    if(secs===60){
-        mins+=1;
-        secs=0;
-    }
-    timer.innerHTML=mins+": " + secs;
-},1000);
 
 const createGlobals= function(){
     cards = ["diamond", "paper-plane-o", "anchor", "bolt", "cube", "leaf", "bicycle","bomb","diamond","paper-plane-o","anchor","bolt","cube","leaf","bicycle","bomb"];
@@ -64,6 +57,14 @@ const createGlobals= function(){
     mins=0;
     timer.innerHTML=mins+": " + secs;
     span = document.getElementsByClassName("close")[0];
+    startTimer=setInterval(function(){
+        secs+=1;
+        if(secs===60){
+            mins+=1;
+            secs=0;
+        }
+        timer.innerHTML=mins+": " + secs;
+        },1000);
     shuffledCards = shuffle(cards);
 };
 createGlobals();
@@ -97,6 +98,7 @@ const animate= function(){
                 span.onclick = function() {
                     modal.style.display = "none";
                 }
+                clearInterval(startTimer);
             }
         }else{
             openedCard.onclick=animate;
