@@ -6,10 +6,22 @@ let score;
 let move;
 let moves;
 let shuffledCards;
+let mins;
+let secs;
+let timer=document.getElementsByClassName("timer")[0];
 document.getElementsByClassName("restart")[0].onclick=function(){
     createGlobals();
     createCards();
 };
+
+const startTimer=setInterval(function(){
+    secs+=1;
+    if(secs===60){
+        mins+=1;
+        secs=0;
+    }
+    timer.innerHTML=mins+": " + secs;
+},1000);
 
 /*
 * Create a list that holds all of your cards
@@ -24,7 +36,9 @@ const createGlobals= function(){
     move=0;
     moves=document.getElementsByClassName("moves");
     moves[0].innerHTML=move;
-
+    secs=0;
+    mins=0;
+    timer.innerHTML=mins+": " + secs;
     /*
     * Display the cards on the page
     *   - shuffle the list of cards using the provided "shuffle" method below
