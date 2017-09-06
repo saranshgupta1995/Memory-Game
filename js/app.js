@@ -9,10 +9,12 @@ let shuffledCards;
 let mins;
 let secs;
 let span;
+let youWin=document.getElementsByClassName("youWin")[0];
 let timer=document.getElementsByClassName("timer")[0];
 document.getElementsByClassName("restart")[0].onclick=function(){
     createGlobals();
     createCards();
+    modal.style.display="none";
 };
 // Get the modal
 var modal = document.getElementById('myModal');
@@ -82,6 +84,7 @@ const animate= function(){
             score+=2;
             if(score===2){
                 modal.style.display="block";
+                youWin.innerHTML="You took "+mins+" minutes and "+secs+" seconds";
                 span.onclick = function() {
                     modal.style.display = "none";
                 }
