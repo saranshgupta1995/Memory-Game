@@ -8,11 +8,15 @@ let moves;
 let shuffledCards;
 let mins;
 let secs;
+let span;
 let timer=document.getElementsByClassName("timer")[0];
 document.getElementsByClassName("restart")[0].onclick=function(){
     createGlobals();
     createCards();
 };
+// Get the modal
+var modal = document.getElementById('myModal');
+
 
 const startTimer=setInterval(function(){
     secs+=1;
@@ -39,6 +43,7 @@ const createGlobals= function(){
     secs=0;
     mins=0;
     timer.innerHTML=mins+": " + secs;
+    span = document.getElementsByClassName("close")[0];
     /*
     * Display the cards on the page
     *   - shuffle the list of cards using the provided "shuffle" method below
@@ -75,6 +80,12 @@ const animate= function(){
             this.onclick=null;
             openedCard=null;
             score+=2;
+            if(score===2){
+                modal.style.display="block";
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+            }
         }else{
             openedCard.onclick=animate;
             found=false;
