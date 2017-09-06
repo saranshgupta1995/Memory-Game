@@ -48,7 +48,7 @@ const createGlobals= function(){
     shuffledCards = shuffle(cards);
 };
 createGlobals();
-let animate= function(){
+const animate= function(){
     move+=1;
     if(move===30){
         document.getElementsByClassName("fa-star")[0].classList.toggle("fa-star");
@@ -82,7 +82,7 @@ let animate= function(){
     }
 };
 
-let checkActivity= function(){
+const checkActivity= function(){
     if(found===false){
         openedCard.classList.toggle("open");
         openedCard.classList.toggle("show");
