@@ -16,6 +16,14 @@ let starList=document.getElementsByClassName("stars")[0];
 document.getElementsByClassName("restart")[0].onclick=function(){
     createGlobals();
     createCards();
+    for (let i=0,thr=document.getElementsByClassName("thrown");i<thr.length;i++){
+        thr[i].classList.toggle("fa-star");
+    }
+    for (let i=0,thr=document.getElementsByClassName("fa-star");i<thr.length;i++){
+        if(thr[i].classList.contains('thrown')){
+            thr[i].classList.toggle('thrown');
+        }
+    }
     modal.style.display="none";
 };
 document.getElementsByClassName("restart")[1].onclick=function(){
@@ -30,7 +38,6 @@ document.getElementsByClassName("restart")[1].onclick=function(){
         }
     }
 };
-// Get the modal
 var modal = document.getElementById('myModal');
 
 
@@ -43,9 +50,6 @@ const startTimer=setInterval(function(){
     timer.innerHTML=mins+": " + secs;
 },1000);
 
-/*
-* Create a list that holds all of your cards
-*/
 const createGlobals= function(){
     cards = ["diamond", "paper-plane-o", "anchor", "bolt", "cube", "leaf", "bicycle","bomb","diamond","paper-plane-o","anchor","bolt","cube","leaf","bicycle","bomb"];
     deck = document.getElementsByClassName("deck");
@@ -60,26 +64,12 @@ const createGlobals= function(){
     mins=0;
     timer.innerHTML=mins+": " + secs;
     span = document.getElementsByClassName("close")[0];
-    /*
-    * Display the cards on the page
-    *   - shuffle the list of cards using the provided "shuffle" method below
-    *   - loop through each card and create its HTML
-    *   - add each card's HTML to the page
-    */
     shuffledCards = shuffle(cards);
 };
 createGlobals();
 const animate= function(){
     move+=1;
-    if(move===30){
-        document.getElementsByClassName("fa-star")[0].classList.toggle("thrown");
-        document.getElementsByClassName("fa-star")[0].classList.toggle("fa-star");
-    }
-    if(move===40){
-        document.getElementsByClassName("fa-star")[0].classList.toggle("thrown");
-        document.getElementsByClassName("fa-star")[0].classList.toggle("fa-star");
-    }
-    if(move===50){
+    if(move===3 || move===4 || move===5){
         document.getElementsByClassName("fa-star")[0].classList.toggle("thrown");
         document.getElementsByClassName("fa-star")[0].classList.toggle("fa-star");
     }
@@ -155,13 +145,3 @@ function shuffle(array) {
 
     return array;
 }
-/*
-* set up the event listener for a card. If a card is clicked:
-*  - display the card's symbol (put this functionality in another function that you call from this one)
-*  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
-*  - if the list already has another card, check to see if the two cards match
-*    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
-*    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
-*    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
-*    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
-*/
