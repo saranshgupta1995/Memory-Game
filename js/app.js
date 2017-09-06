@@ -6,17 +6,24 @@ let score;
 let move;
 let moves;
 let shuffledCards;
+document.getElementsByClassName("restart")[0].onclick=function(){
+    createGlobals();
+    createCards();
+};
+
 /*
 * Create a list that holds all of your cards
 */
 const createGlobals= function(){
     cards = ["diamond", "paper-plane-o", "anchor", "bolt", "cube", "leaf", "bicycle","bomb","diamond","paper-plane-o","anchor","bolt","cube","leaf","bicycle","bomb"];
     deck = document.getElementsByClassName("deck");
+    deck[0].innerHTML="";
     openedCard = null;
     found = null;
     score=0;
     move=0;
     moves=document.getElementsByClassName("moves");
+    moves[0].innerHTML=move;
 
     /*
     * Display the cards on the page
