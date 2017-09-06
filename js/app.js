@@ -19,6 +19,15 @@ const moves=document.getElementsByClassName("moves");
 
  let animate= function(){
      move+=1;
+     if(move===30){
+         document.getElementsByClassName("fa-star")[0].classList.toggle("fa-star");
+     }
+     if(move===40){
+         document.getElementsByClassName("fa-star")[0].classList.toggle("fa-star");
+     }
+     if(move===50){
+         document.getElementsByClassName("fa-star")[0].classList.toggle("fa-star");
+     }
      moves[0].innerHTML=move;
      if(found===false){
          openedCard=null;
@@ -48,7 +57,6 @@ let checkActivity= function(){
         openedCard.classList.toggle("show");
         this.classList.toggle("open");
         this.classList.toggle("show");
-        console.log(moves);
     }
 }
 
