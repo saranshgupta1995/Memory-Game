@@ -1,20 +1,11 @@
 # Memory Game Project
 
-## Table of Contents
+## Introduction
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+This project is a JavaScript minigame  which aims to challenge the player's ability to retain randomized images in his mind. The project has negligible dependencies but *does require a mordern web browser which supports ES6*.
 
-## Instructions
+Click to toggle cards and match the matches as quickly as possible.
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+## To Play
 
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+To play the game, simply open **index.html** from your favorite updated web browser.
