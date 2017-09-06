@@ -11,10 +11,24 @@ let secs;
 let span;
 let youWin=document.getElementsByClassName("youWin")[0];
 let timer=document.getElementsByClassName("timer")[0];
+let starsInfo=document.getElementsByClassName("stars-info")[0];
+let starList=document.getElementsByClassName("stars")[0];
 document.getElementsByClassName("restart")[0].onclick=function(){
     createGlobals();
     createCards();
     modal.style.display="none";
+};
+document.getElementsByClassName("restart")[1].onclick=function(){
+    createGlobals();
+    createCards();
+    for (let i=0,thr=document.getElementsByClassName("thrown");i<thr.length;i++){
+        thr[i].classList.toggle("fa-star");
+    }
+    for (let i=0,thr=document.getElementsByClassName("fa-star");i<thr.length;i++){
+        if(thr[i].classList.contains('thrown')){
+            thr[i].classList.toggle('thrown');
+        }
+    }
 };
 // Get the modal
 var modal = document.getElementById('myModal');
@@ -58,12 +72,15 @@ createGlobals();
 const animate= function(){
     move+=1;
     if(move===30){
+        document.getElementsByClassName("fa-star")[0].classList.toggle("thrown");
         document.getElementsByClassName("fa-star")[0].classList.toggle("fa-star");
     }
     if(move===40){
+        document.getElementsByClassName("fa-star")[0].classList.toggle("thrown");
         document.getElementsByClassName("fa-star")[0].classList.toggle("fa-star");
     }
     if(move===50){
+        document.getElementsByClassName("fa-star")[0].classList.toggle("thrown");
         document.getElementsByClassName("fa-star")[0].classList.toggle("fa-star");
     }
     moves[0].innerHTML=move;
@@ -85,6 +102,8 @@ const animate= function(){
             if(score===2){
                 modal.style.display="block";
                 youWin.innerHTML="You took "+mins+" minutes and "+secs+" seconds";
+                starsInfo.innerHTML="You recieved a "+ document.getElementsByClassName("fa-star").length.toString()+ " star rating";
+                console.log(document.getElementsByClassName("fa-star").length.toString(), starsInfo);
                 span.onclick = function() {
                     modal.style.display = "none";
                 }
