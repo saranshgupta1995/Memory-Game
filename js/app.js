@@ -3,7 +3,11 @@
  */
  const cards = ["diamond","paper-plane-o","anchor","bolt","cube","leaf","bicycle","bomb","diamond","paper-plane-o","anchor","bolt","cube","leaf","bicycle","bomb"];
  const deck = document.getElementsByClassName("deck");
-
+ let openedCard = null;
+let found = null;
+let score=0;
+let move=0;
+const moves=document.getElementsByClassName("moves");
 
 /*
  * Display the cards on the page
@@ -12,12 +16,41 @@
  *   - add each card's HTML to the page
  */
  const shuffledCards = shuffle(cards);
- console.log(shuffledCards);
 
  let animate= function(){
+     move+=1;
+     moves[0].innerHTML=move;
+     if(found===false){
+         openedCard=null;
+         found=null;
+     }
      this.classList.toggle("open");
      this.classList.toggle("show");
- }
+     if(openedCard===null){
+         openedCard=this;
+         openedCard.onclick=null;
+     }
+    else{
+         if(openedCard.firstElementChild.className===this.firstElementChild.className){
+             this.onclick=null;
+             openedCard=null;
+             score+=2;
+         }else{
+             openedCard.onclick=animate;
+             found=false;
+         }
+     }
+}
+
+let checkActivity= function(){
+    if(found===false){
+        openedCard.classList.toggle("open");
+        openedCard.classList.toggle("show");
+        this.classList.toggle("open");
+        this.classList.toggle("show");
+        console.log(moves);
+    }
+}
 
  let elem,subelem;
  for (let i= 0; i<16; i++){
@@ -27,6 +60,7 @@
      subelem.classList.toggle("fa");
      subelem.classList.toggle("fa-"+shuffledCards[i]);
      elem.onclick= animate;
+     elem.addEventListener("transitionend", checkActivity, true);
      elem.appendChild(subelem);
      deck[0].appendChild(elem);
  }
