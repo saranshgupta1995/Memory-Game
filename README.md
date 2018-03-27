@@ -8,4 +8,4 @@ Click to toggle cards and match the matches as quickly as possible.
 
 ## To Play
 
-To play the game, simply open **index.html** from your favorite updated web browser.
+To play the game, simply open **https://saranshgupta1995.github.io/Memory-Game/** from your favorite updated web browser.
